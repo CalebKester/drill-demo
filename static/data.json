@@ -1,82 +1,56 @@
 {
 	"sections": [
 		{
-			"name": "Quantitative Methods",
+			"sectionID": 1,
+			"title": "Quantitative Methods",
 			"children": [
 				{
-					"name": "Required Rate of Return",
+					"sectionID": 2,
+					"title": "Required Rate of Return",
 					"children": [
 						{
-							"name": "Nominal Risk-Free Rate",
-							"content": {
-								"id": 1,
-								"question": "nominal risk-free rate = real risk-free rate + expected inflation rate",
-								"answer": "15",
-								"tolerance": 0.01,
-								"seed": 4235759
-							}
+							"sectionID": 3,
+							"title": "Nominal Risk-Free Rate",
+							"questionID": 1
 						},
 						{
-							"name": "Required Interest Rate",
-							"content": {
-								"id": "2",
-								"question": "required interest rate = nominal risk-free rate + default risk premium + liquidity, premium + maturity risk premium",
-								"answer": "15",
-								"tolerance": 0.01,
-								"seed": 2548976
-							}
+							"sectionID": 4,
+							"title": "Required Interest Rate",
+							"questionID": 2
 						}
 					]
 				},
 				{
-					"name": "Effective Annual Rates",
-					"content": {
-						"id": "L1EffAnn",
-						"question": "\\[EAR = (1 + periodic rate)^m - 1\\]",
-						"answer": "15",
-						"tolerance": 0.01,
-						"seed": 2548976
-					}
+					"sectionID": 5,
+					"title": "Effective Annual Rates",
+					"questionID": "L1EffAnn"
 				}
 			]
 		},
 		{
-			"name": "Quantitative Methods",
+			"sectionID": 6,
+			"title": "Quantitative Methods",
 			"children": [
 				{
-					"name": "Required Rate of Return",
+					"sectionID": 7,
+					"title": "Required Rate of Return",
 					"children": [
 						{
-							"name": "Nominal Risk-Free Rate",
-							"content": {
-								"id": 3,
-								"question": "nominal risk-free rate = real risk-free rate + expected inflation rate",
-								"answer": "15",
-								"tolerance": 0.01,
-								"seed": 4235759
-							}
+							"sectionID": 8,
+							"title": "Nominal Risk-Free Rate",
+							"questionID": 3
 						},
 						{
-							"name": "Required Interest Rate",
-							"content": {
-								"id": 5,
-								"question": "required interest rate = nominal risk-free rate + default risk premium + liquidity, premium + maturity risk premium",
-								"answer": "15",
-								"tolerance": 0.01,
-								"seed": 2548976
-							}
+							"sectionID": 9,
+							"title": "Required Interest Rate",
+							"questionID": 4
 						}
 					]
 				},
 				{
-					"name": "Effective Annual Rates",
-					"content": {
-						"id": 5,
-						"question": "\\[EAR = (1 + periodic rate)^m - 1\\]",
-						"answer": "15",
-						"tolerance": 0.01,
-						"seed": 2548976
-					}
+					"sectionID": 10,
+					"title": "Effective Annual Rates",
+					"questionID": 5
 				}
 			]
 		}
@@ -85,7 +59,7 @@
 		{
 			"id": 1,
 			"seed": 453275,
-			"name": "Interest",
+			"title": "Interest",
 			"question": "<p>An account generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <table style=\"width:25%\"> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
 			"solution": "\\begin{align*}\n\\class{var1}{i_{t}} &= \\dfrac{\\class{var2}{a(t)} - \\class{var3}{a(t-1)}}{ \\class{var3}{a(t - 1)}}\\\\\n\\\\\n\\class{var1}{i_{[23`x22]}} &= \\dfrac{\\class{var2}{[6`Choose(x20,x22)]} - \\class{var3}{[7`Choose(x20,x21)]} }{\\class{var3}{ [8`x7]}}\\\\\n\\\\\n&= \\class{var1}{[9`ROUND((x6-x7)/x8,4)]} \\hspace{0.1cm} \\text{or} \\hspace{0.1cm}\\class{var1}{[10`x9`p0]}\n\\end{align*}",
 			"answer": 10,
@@ -95,36 +69,35 @@
 		{
 			"id": 2,
 			"seed": 4532765,
-			"name": "Interest",
+			"title": "Interest",
 			"question": "<p>An account generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <table style=\"width:25%\"> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
 			"solution": "\\begin{align*}\n\\class{var1}{i_{t}} &= \\dfrac{\\class{var2}{a(t)} - \\class{var3}{a(t-1)}}{ \\class{var3}{a(t - 1)}}\\\\\n\\\\\n\\class{var1}{i_{[23`x22]}} &= \\dfrac{\\class{var2}{[6`Choose(x20,x22)]} - \\class{var3}{[7`Choose(x20,x21)]} }{\\class{var3}{ [8`x7]}}\\\\\n\\\\\n&= \\class{var1}{[9`ROUND((x6-x7)/x8,4)]} \\hspace{0.1cm} \\text{or} \\hspace{0.1cm}\\class{var1}{[10`x9`p0]}\n\\end{align*}",
 			"answer": 10,
-			"tolerance": 0.1,
-			"placeholder": "r"
+			"tolerance": 0.1
 		}
 	],
 	"attempts": [
 		{
 			"id": 5315,
 			"ordinal": 1,
-			"question": "L1Nom",
-			"seed": 4235759,
-			"answer": "15.24",
+			"questionID": 1,
+			"seed": 4235752,
+			"answer": 15.24,
 			"tolerance": 0.01,
 			"userAnswer": {
-				"attempt": "16.24",
+				"attempt": 16.24,
 				"isCorrect": false
 			}
 		},
 		{
 			"id": 5315,
-			"ordinal": 1,
-			"question": "L1Nom",
+			"ordinal": 2,
+			"questionID": 1,
 			"seed": 4235759,
-			"answer": "15.24",
+			"answer": 15.24,
 			"tolerance": 0.01,
 			"userAnswer": {
-				"attempt": "16.24",
+				"attempt": 16.24,
 				"isCorrect": false
 			}
 		}

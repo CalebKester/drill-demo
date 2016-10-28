@@ -1,15 +1,29 @@
 <template>
 	<div>
-		{{ $route.params.id }}
-		<br />
-		This is drill
+		<div class="loading" v-if="loading">
+  		Loading...
+    </div>
 
-		<input type="text" />
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
 
-		{{questions}}
+    <div v-if="question" class="content">
+      <h2>{{ question.title }} #{{ attempt }}</h2>
+      <div v-html="question.question"></div>
+			<input type="text" :placeholder="placeholder" />
+			<button type="button">Score</button>
+
+			<div>
+				{{question.seed}}
+				{{question.answer}}
+				{{question.tolerance}}
+
+			</div>
+    </div>
 
 
-		<br /><br /><br />
+<br /><br />
 
 		<router-link to="/">home</router-link>
 	</div>
@@ -21,22 +35,38 @@
 		props: ['data'],
 		data () {
 			return {
-				questions: null
+				loading: false,
+				error: null,
+				attempt: 1,
+				question: null
+			}
+		},
+		computed: {
+			placeholder: function () {
+				if (this.question.placeholder) {
+					return this.question.placeholder + ' ='
+				}
+				return '='
 			}
 		},
 		created: function () {
-			this.getQuestions()
+			this.fetchData()
 		},
 		watch: {
 			'$route' (to, from) {
-				this.getQuestions()
+				this.fetchData()
 			}
 		},
 		methods: {
-			// TODO: http://router.vuejs.org/en/advanced/data-fetching.html
-			getQuestions: function () {
-				this.$http.get('http://localhost:3004/questions/' + this.$route.params.id).then(function (response) {
-					this.questions = response.data
+			fetchData: function () {
+				this.error = this.question = null
+				this.loading = true
+				this.$http.get('http://localhost:3004/questions/' + this.$route.params.id).then((response) => {
+					this.loading = false
+					this.question = response.data
+				}, (response) => {
+					this.loading = false
+					this.error = response.status + ' ' + response.statusText
 				})
 			}
 		}

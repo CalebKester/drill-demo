@@ -2,17 +2,17 @@
 	<div id="home">
 		<h1>{{title}}</h1>
 		<h2>Choose your formula</h2>
-		<QuestionSet :data="sections"></QuestionSet>
+		<drill-sections :data="sections"></drill-sections>
 	</div>
 </template>
 
 <script>
-	import QuestionSet from './components/QuestionSet'
+	import DrillSections from './components/Drill-Sections'
 
 	export default {
 		name: 'home',
 		components: {
-			QuestionSet
+			DrillSections
 		},
 		data () {
 			return {
@@ -21,13 +21,15 @@
 			}
 		},
 		created: function () {
-			this.getQuestionSet()
+			this.getDrillSections()
 		},
 		methods: {
 			// Gather data from the json file/url
-			getQuestionSet: function () {
-				this.$http.get('http://localhost:3004/sections').then(function (response) {
+			getDrillSections: function () {
+				this.$http.get('http://localhost:3004/sections').then((response) => {
 					this.sections = response.data
+				}, (response) => {
+
 				})
 			}
 		}
