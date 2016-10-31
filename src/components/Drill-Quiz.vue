@@ -26,8 +26,7 @@
 			<button type="button" v-on:click="nextQuestion()">Next</button>
     </div>
 
-
-<br /><br />
+		<br /><br />
 
 		<router-link to="/">home</router-link>
 	</div>
@@ -61,6 +60,8 @@
 		},
 		created: function () {
 			this.fetchData()
+			this.queueData()
+			this.queueData()
 		},
 		watch: {
 			'$route' (to, from) {
@@ -101,12 +102,14 @@
 			// Queues the next question
 			queueData: function () {
 				// Check to make sure this request won't get cached
+				// Temp toggle to make sure we get new data
 				this.questionID = (this.questionID === 1) ? 2 : 1
 				this.$http.get('http://localhost:3004/questions/' + this.questionID).then((response) => {
 					this.questionQueue.push(response.data)
 					console.log(this.questionQueue)
 				}, (response) => {
 					// add failure
+					console.log('Failed to Queue data')
 				})
 			},
 
@@ -127,10 +130,11 @@
 			},
 
 			// Grabs the initial data
+			// TODO: See if we can merge this with queueData
 			fetchData: function () {
 				this.error = this.question = null
 				this.loading = true
-				this.$http.get('http://localhost:3004/questions/' + this.$route.params.id).then((response) => {
+				this.$http.get('http://localhost:3004/questions/' + this.questionID).then((response) => {
 					this.loading = false
 					this.question = response.data
 				}, (response) => {
