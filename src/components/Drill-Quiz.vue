@@ -22,9 +22,15 @@
 				<div v-html="question.solution"></div>
 
 			</div>
-			<button type="button" v-on:click="queueData()">Queue</button>
+			<!--<button type="button" v-on:click="queueData()">Queue</button>-->
 			<button type="button" v-on:click="nextQuestion()">Next</button>
     </div>
+		<div v-else>
+			<!-- Make this be the loading screen? -->
+			No Questions available.
+			Please try again
+			<button type="button" v-on:click="nextQuestion()">Try again</button>
+		</div>
 
 		<br /><br />
 
@@ -60,7 +66,6 @@
 		},
 		created: function () {
 			this.fetchData()
-			this.queueData()
 			this.queueData()
 		},
 		watch: {
@@ -115,18 +120,19 @@
 
 			// Grabs a new question from our queue and then pulls more
 			nextQuestion: function () {
-				if (this.questionQueue.length === 0) {
-					this.queueData()
-				}
-				console.log(this.questionQueue.length)
-				// while (this.questionQueue.length < 2) {
+				// if (this.questionQueue.length === 0) {
+				// 	this.queueData()
+				// } else {
 				// 	console.log(this.questionQueue.length)
-				//	this.queueData()
+				// 	// while (this.questionQueue.length < 2) {
+				// 	// 	console.log(this.questionQueue.length)
+				// 	//	this.queueData()
+				// 	// }
+				// 	// Probably should make this more foolproof, if the api doesn't
+				// 	// return anything then what?
 				// }
-				// Probably should make this more foolproof, if the api doesn't
-				// return anything then what?
-				this.queueData()
 				this.question = this.questionQueue.shift()
+				this.queueData()
 			},
 
 			// Grabs the initial data
