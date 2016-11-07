@@ -60,7 +60,7 @@
       "id": 1,
       "seed": 453275,
       "title": "Interest",
-      "question": "<p>An account generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <table style=\"width:25%\"> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
+      "question": "<p>An accounts generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <div class=\"tableWrap\"><table> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table></div>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
       "solution": "\\begin{align*}\n\\class{var1}{i_{t}} &= \\dfrac{\\class{var2}{a(t)} - \\class{var3}{a(t-1)}}{ \\class{var3}{a(t - 1)}}\\\\\n\\\\\n\\class{var1}{i_{[23`x22]}} &= \\dfrac{\\class{var2}{[6`Choose(x20,x22)]} - \\class{var3}{[7`Choose(x20,x21)]} }{\\class{var3}{ [8`x7]}}\\\\\n\\\\\n&= \\class{var1}{[9`ROUND((x6-x7)/x8,4)]} \\hspace{0.1cm} \\text{or} \\hspace{0.1cm}\\class{var1}{[10`x9`p0]}\n\\end{align*}",
       "answer": 10,
       "tolerance": 0.1,
@@ -70,7 +70,7 @@
       "id": 2,
       "seed": 4532765,
       "title": "Interest Rate",
-      "question": "<p>An account generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <table style=\"width:25%\"> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
+      "question": "<p>Ans account generates interest that varies each period.</p> <p>You are given the balance in the account various times below.</p> <table style=\"width:25%\"> <tr><td>Time</td> <td>\\(0\\)</td> <td>\\(1\\)</td> <td>\\(2\\)</td> <td>\\(3\\)</td></tr> <tr><td>Balance</td> <td>\\([3`RND(30,50,0)`c0]\\)</td><td>\\([4`x3+RND(8,15,0)`c0]\\) </td><td>\\([5`x4+RND(2,6,0)`c0]\\)</td><td>\\(\\$[99`x5+RND(15,25,0)]\\)</td></tr></table>[20`Array(x3,x4,x5,x99)`hide]<p>Calculate the effective rate of interest between time \\([21`RND(0,2,0)]\\) and time \\([22`x21+1]\\)</p>",
       "solution": "\\begin{align*}\n\\class{var1}{i_{t}} &= \\dfrac{\\class{var2}{a(t)} - \\class{var3}{a(t-1)}}{ \\class{var3}{a(t - 1)}}\\\\\n\\\\\n\\class{var1}{i_{[23`x22]}} &= \\dfrac{\\class{var2}{[6`Choose(x20,x22)]} - \\class{var3}{[7`Choose(x20,x21)]} }{\\class{var3}{ [8`x7]}}\\\\\n\\\\\n&= \\class{var1}{[9`ROUND((x6-x7)/x8,4)]} \\hspace{0.1cm} \\text{or} \\hspace{0.1cm}\\class{var1}{[10`x9`p0]}\n\\end{align*}",
       "answer": 10,
       "tolerance": 0.1
@@ -124,6 +124,30 @@
         "answer": 15
       },
       "id": 4
+    },
+    {
+      "questionID": 1,
+      "seed": 453275,
+      "answer": 10,
+      "tolerance": 0.1,
+      "user": {
+        "attempt": 1,
+        "isCorrect": false,
+        "answer": 15
+      },
+      "id": 5
+    },
+    {
+      "questionID": 1,
+      "seed": 453275,
+      "answer": 10,
+      "tolerance": 0.1,
+      "user": {
+        "attempt": 1,
+        "isCorrect": false,
+        "answer": 15
+      },
+      "id": 6
     }
   ]
 }

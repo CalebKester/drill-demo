@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="notecard">
 		<div class="loading" v-if="loading">
   		Loading...
     </div>
@@ -8,35 +8,82 @@
       {{ error }}
     </div>
 
-    <div v-if="question" class="content">
-      <h2>{{ question.title }} #{{ user.attempt }}</h2>
-      <div v-html="question.question"></div>
-			<form v-on:submit.prevent="submitScore">
-				<input v-model.number="user.answer" :placeholder="placeholder" type="number" step="any" required />
-				<button type="submit">Score</button>
-			</form>
+    <template v-if="question">
+			<div class="notecard-header">{{ question.title }} #{{ user.attempt }}</div>
+			<div class="notecard-content">
+				<div v-html="question.question"></div>
+				<form v-on:submit.prevent="submitScore">
+					<input v-model.number="user.answer" :placeholder="placeholder" type="number" step="any" required />
+					<button type="submit">Score</button>
+				</form>
 
-			<div v-if="user.isCorrect != null">
-				<h3>{{user.isCorrect}}!</h3>
-				<strong>Solution:</strong>
-				<div v-html="question.solution"></div>
-
+				<div v-if="user.isCorrect != null">
+					<h3>{{user.isCorrect}}!</h3>
+					<strong>Solution:</strong>
+					<div v-html="question.solution"></div>
+				</div>
 			</div>
-			<!--<button type="button" v-on:click="queueData()">Queue</button>-->
-			<button type="button" v-on:click="nextQuestion()">Next</button>
-    </div>
-		<div v-else>
+    </template>
+		<template v-else>
 			<!-- Make this be the loading screen? -->
 			No Questions available.
 			Please try again
 			<button type="button" v-on:click="nextQuestion()">Try again</button>
+		</template>
+		<div class="notecard-footer">
+			<router-link to="/">Formulas</router-link>
+			<template v-if="user.isCorrect != null">
+				<button type="button" v-on:click="nextQuestion()">Next</button>
+			</template>
+			<template v-else>
+				<button type="button" v-on:click="nextQuestion()">Skip</button>
+			</template>
 		</div>
-
-		<br /><br />
-
-		<router-link to="/">home</router-link>
 	</div>
 </template>
+
+<style>
+	.notecard {
+		max-width: 600px;
+	}
+
+	.notecard-header {
+		font-weight: 500;
+		border-bottom: 1px solid hsla(0, 0%, 0%, 0.14);
+		padding: 1rem;
+		background: #fff;
+		font-size: 1.25rem;
+		border-radius: 4px 4px 0 0;
+	}
+
+	.notecard-content {
+		padding: 1rem;
+		border-radius: 0 0 5px 5px;
+		background: #fff;
+	}
+
+	.notecard-footer {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem;
+		background: #263238;
+		border-radius: 0 0 5px 5px;
+		color: #fff;
+	}
+
+	.notecard-footer a {
+		color: #fff;
+	}
+
+	.tableWrap {
+		overflow-y: auto;
+		padding: 0.5rem;
+	}
+
+	p {
+		margin: 0 0 1rem;
+	}
+</style>
 
 <script>
 	export default {
@@ -111,7 +158,7 @@
 				this.questionID = (this.questionID === 1) ? 2 : 1
 				this.$http.get('http://localhost:3004/questions/' + this.questionID).then((response) => {
 					this.questionQueue.push(response.data)
-					console.log(this.questionQueue)
+					// console.log(this.questionQueue)
 				}, (response) => {
 					// add failure
 					console.log('Failed to Queue data')

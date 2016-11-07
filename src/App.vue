@@ -35,3 +35,21 @@
 		}
 	}
 </script>
+
+<style>
+	body {
+		background: #B0BEC5;
+		font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
+	}
+
+	html, body, #app {
+		height: 100%;
+	}
+
+	#app {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+</style>

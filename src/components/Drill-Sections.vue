@@ -1,13 +1,15 @@
 <template>
-	<ol>
-		<li v-for="section in data" >
-			<router-link :to="'Drill/' + section.questionID" v-if="section.questionID">Start</router-link>
-			<span>{{section.title}}</span>
-			<ol v-if="section.children">
-				<question-set :data="section.children"></question-set>
-			</ol>
-		</li>
-	</ol>
+	<div class="notecard">
+		<ol>
+			<li v-for="section in data" >
+				<router-link :to="'Drill/' + section.questionID" v-if="section.questionID">Start</router-link>
+				<span>{{section.title}}</span>
+				<ol v-if="section.children">
+					<question-set :data="section.children"></question-set>
+				</ol>
+			</li>
+		</ol>
+	</div>
 </template>
 
 <script>
