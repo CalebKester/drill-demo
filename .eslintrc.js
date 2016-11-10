@@ -8,7 +8,9 @@ module.exports = {
   extends: 'standard',
   // required to lint *.vue files
   globals: {
-    "_": true
+    "_": true,
+    "MathJax": true,
+    "marked": true
   },
   plugins: [
     'html'

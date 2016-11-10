@@ -1,8 +1,10 @@
 <template>
-	<div id="home">
-		<h1>{{title}}</h1>
-		<h2>Choose your formula</h2>
-		<drill-sections :data="sections"></drill-sections>
+	<div id="home" class="notecard">
+		<div class="notecard-header">{{title}}</div>
+		<div class="notecard-content">
+			<!--<h2>Choose your formula</h2>-->
+			<drill-sections :data="sections"></drill-sections>
+		</div>
 	</div>
 </template>
 
@@ -37,19 +39,16 @@
 </script>
 
 <style>
-	body {
+	/*body {
 		background: #B0BEC5;
 		font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
-	}
-
-	html, body, #app {
-		height: 100%;
-	}
+	}*/
 
 	#app {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		padding: 1rem;
+		/*align-items: center;*/
 	}
 
 </style>
