@@ -3,10 +3,10 @@
 		<div class="notecard-header">Drill Admin</div>
 		<div class="notecard-content">
 			<strong>Questions</strong>
-			<router-link to="Admin/Question/0" class="button button--small">Add new</router-link>
+			<router-link to="/Admin/Question/0" class="button button--small">Add new</router-link>
 			<ul>
 				<li v-for="question in questions">
-					<router-link :to="'Admin/Question/' + question.id">
+					<router-link :to="'/Admin/Question/' + question.id">
 						{{question.id}}: {{question.title}}
 					</router-link>
 				</li>

@@ -125,12 +125,14 @@
 			}
 		},
 		created: function () {
-			this.fetchData()
+			// this.fetchData()
 			this.queueData()
+			this.queueData()
+			this.nextQuestion()
 		},
 		watch: {
 			'$route' (to, from) {
-				this.fetchData()
+				this.queueData()
 			}
 		},
 		methods: {
@@ -168,9 +170,10 @@
 			queueData: function () {
 				// Check to make sure this request won't get cached
 				// Temp toggle to make sure we get new data
-				this.questionID = (this.questionID === 1) ? 2 : 1
-				this.$http.get('http://localhost:3004/questions/' + this.questionID).then((response) => {
-					this.questionQueue.push(response.data)
+				this.questionID = 19
+				this.$http.get('http://localhost:3004/questions?sectionid=' + this.questionID).then((response) => {
+					var question = response.data[Math.floor(Math.random() * response.data.length)]
+					this.questionQueue.push(question)
 					// console.log(this.questionQueue)
 				}, (response) => {
 					// add failure

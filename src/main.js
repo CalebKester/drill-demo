@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const router = new VueRouter({
-	// mode: 'history', // need to look into routing more to see if we can do this.
+	mode: 'history', // need to look into routing more to see if we can do this.
 	routes: [
 		{ path: '/', component: App },
 		{ path: '/Drill/:id', component: DrillQuiz },
